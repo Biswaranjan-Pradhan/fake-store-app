@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { FEMALE_TAGGED_PRODUCTS } from '../utils/constants';
 import { Link } from "react-router";
 import { addToCart } from '../features/cartSlice';
+import { toast } from 'sonner';
 
 const Productlist = (props) => {
     const { productInfo } = props;
@@ -11,6 +12,17 @@ const Productlist = (props) => {
 
     let handleAddToCart = (product) => {
         dispatch(addToCart(product));
+        toast('', {
+            theme: 'light',
+            description: (
+                <>
+                    <strong style={{ color: 'blueviolet' }}>
+                        {product.title}
+                    </strong> has been added to your cart.
+                </>
+            ),
+            closeButton: true
+        });
     }
 
     return (

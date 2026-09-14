@@ -3,6 +3,7 @@ import Cartitem from "./Cartitem";
 import { clearCart } from "../features/cartSlice";
 import { EMPTY_CART } from "../utils/constants";
 import { Link } from "react-router";
+import { toast } from 'sonner';
 
 const Cart = () => {
     const cartItems = useSelector(store => store.cartSlice.cartItems);
@@ -10,7 +11,18 @@ const Cart = () => {
     const dispatch = useDispatch();
 
     let clearHandler = () => {
-        dispatch(clearCart())
+        dispatch(clearCart());
+        toast('', {
+            theme: 'light',
+            description: (
+                <>
+                    <strong style={{ color: 'blueviolet' }}>
+                        Oops, Your cart has been cleared
+                    </strong> 
+                </>
+            ),
+            closeButton: true
+        });
     }
 
     let total = 0;
@@ -18,7 +30,7 @@ const Cart = () => {
          items.map((i) => {
             total += (Math.round(i.price * 8000)/100) * i.quantity;
         })
-        return total;
+        return Math.round(total);
     }
 
     console.log(cartItems[0]);
@@ -34,7 +46,9 @@ const Cart = () => {
                 </div>
                 <div>
                     <p>
-                        <b className="clear-cart" onClick={clearHandler} >Clear Cart</b>
+                        <b className="clear-cart" onClick={clearHandler} >
+                            Clear Cart
+                        </b>
                     </p>
                 </div>
             </div>

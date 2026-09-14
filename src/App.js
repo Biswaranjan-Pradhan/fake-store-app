@@ -11,6 +11,7 @@ import { UserContext } from "./utils/ContextUser";
 import Cart from "./components/Cart";
 import {Provider} from "react-redux";
 import appStore from "./redux/appStore";
+import { Toaster } from "sonner";
 
 const App = () => {
     const { loggedInUser } = useContext(UserContext);
@@ -22,6 +23,7 @@ const App = () => {
                 <Header />
                 <div className="router-outlet">
                     <Outlet />
+                    <Toaster />
                 </div>
             </UserContext.Provider>
             </Provider>
