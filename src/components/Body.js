@@ -50,10 +50,10 @@ const Body = () => {
                         setListOfProducts(womenClothing);
                     }} className={`btn-small ${activeFilter === "Womens Clothing" ? 'active' : ''}`}>Women's Clothings</button>
                     <button onClick={() => {
-                        const jewelery = filteredProductList.filter((prod) => prod.category.toLowerCase() === "jewelery".toLowerCase());
+                        const jwellery = filteredProductList.filter((prod) => prod.category.toLowerCase() === "jewelery".toLowerCase());
                         setActiveFilter('Jwellery');
-                        setListOfProducts(jewelery);
-                    }} className={`btn-small ${activeFilter === 'Jwellery' ? 'active' : ''}`}>Jewelery</button>
+                        setListOfProducts(jwellery);
+                    }} className={`btn-small ${activeFilter === 'Jwellery' ? 'active' : ''}`}>Jwellery</button>
                     <button onClick={() => {
                         const electronics = filteredProductList.filter((prod) => prod.category.toLowerCase() === "electronics".toLowerCase());
                         setActiveFilter('Electronics');
