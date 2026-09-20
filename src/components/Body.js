@@ -32,12 +32,12 @@ const Body = () => {
                     Filter Products:
                     <button onClick={() => 
                         applyFilter('All', () => filteredProductList)
-                    } className={`btn-small ${activeFilter === 'All' ? 'active' : ''}`}>All {activeFilter === 'All' ? 'active' : ''}</button>
+                    } className={`btn-small ${activeFilter === 'All' ? 'active' : ''}`}>All</button>
                     <button onClick={() => {
                         const filteredProducts = filteredProductList.filter((prod) => prod.rating.rate >= 4);
                         setActiveFilter('Top Rated');
                         setListOfProducts(filteredProducts);
-                    }} className={`btn-small ${activeFilter === 'Top Rated' ? 'active' : ''}`}>Top Rated  {activeFilter === 'Top Rated' ? 'active' : ''}</button>
+                    }} className={`btn-small ${activeFilter === 'Top Rated' ? 'active' : ''}`}>Top Rated</button>
                     <button onClick={() => {
                         const mensClothing = filteredProductList.filter((prod) => prod.category.toLowerCase() === "men's clothing".toLowerCase());
                         setActiveFilter('Mens Clothing');
