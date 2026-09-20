@@ -23,9 +23,11 @@ const Body = () => {
         setListOfProducts(filterFn());
     }
 
-    if(networkStatus) return (<h2>You are currently offline, please check your internet connection and try again</h2> )
+    if(networkStatus) return (<h2>You are currently offline, please check your internet connection and try again</h2> );
 
-    return listOfProducts.length == 0 ? <ShimmerProductCard /> : (
+    if(productList.length === 0) return <ShimmerProductCard/>;
+
+    return (
         <div className="app-body">
             <div className="filter-options">
                 <div>
@@ -61,19 +63,40 @@ const Body = () => {
                     }} className={`btn-small ${activeFilter === 'Electronics' ? 'active' : ''}`}>Electronics</button>
                 </div>
                 <div>
-                    <input type="text" className="input-filed mr-4" value={searchProduct} onChange={
-                        (e) => { setSearchProduct(e?.target?.value); }
-                    } placeholder="search product" />
-                    <button className="btn-small" onClick={() => {
+                    <input 
+                        type="text" 
+                        className="input-filed mr-4" 
+                        value={searchProduct} 
+                        onChange={
+                            (e) => { 
+                                setSearchProduct(e?.target?.value); 
+                                if(e?.target?.value.trim() === '') {
+                                    setListOfProducts(filteredProductList);
+                                }
+                            }
+                        } 
+                        placeholder="search product" />
+                    <button 
+                        className="btn-small" 
+                        onClick={() => {
                         const searchedProducts = filteredProductList.filter((prod) => {
                             return prod.title.toLowerCase().includes(searchProduct.toLowerCase());
-                        })
+                        });
                         setListOfProducts(searchedProducts);
                     }}>Search</button>
                 </div>
             </div>
             <div className="total-prod-count">
-                Total <span className="highlight-text">{listOfProducts.length}</span> Products Available
+                {
+                    listOfProducts.length == 0 && searchProduct.trim() !== '' ?
+                    <>
+                        Sorry, no products found for your search: <b className="highlight-text">{searchProduct}</b>
+                    </> :
+                    <>
+                        Total <span className="highlight-text">{listOfProducts.length}</span> Products Available
+                    </>
+                }
+                
             </div>
             <div className="prod-lists">
                 {
