@@ -12,32 +12,32 @@ const Header = () => {
     const cartItems = useSelector(store => store.cartSlice.cartItems);
 
     return (
-        <div className="app-header">
+        <div className="flex justify-between align-center">
             <a href="http://localhost:1234/">
                 <img src={LOGO_URL} width={50} height={50} />
             </a>
             
             <div>
-                <ul className="nav-items">
-                    <li>
-                        <Link className="route-link" to="/">Products</Link>
+                <ul className="flex align-center pt-3">
+                    <li className="pl-3">
+                        <Link className="text-fuchsia-800 hover:text-fuchsia-600" to="/">Products</Link>
                     </li>
-                    <li>
-                        <Link className="route-link" to="/grocery">Grocery</Link>
+                    <li className="pl-3">
+                        <Link className="text-fuchsia-800 hover:text-fuchsia-600" to="/grocery">Grocery</Link>
                     </li>
-                    <li>
-                        <Link className="route-link" to="/about">About</Link>
+                    <li className="pl-3">
+                        <Link className="text-fuchsia-800 hover:text-fuchsia-600" to="/about">About</Link>
                     </li>
-                    <li>
-                        <Link className="route-link" to="/cart">Cart ({cartItems.length})</Link>
+                    <li className="pl-3">
+                        <Link className="text-fuchsia-800 hover:text-fuchsia-600" to="/cart">Cart ({cartItems.length})</Link>
                     </li>
-                    <li>
-                        <button className="btn-small" onClick={() => {
+                    <li className="pl-3">
+                        <button className="text-fuchsia-800 hover:text-fuchsia-600 cursor-pointer" onClick={() => {
                             authBtn === 'Login' ? setAuthBtn('Logout') : setAuthBtn('Login')
                         }}>{authBtn}</button>
                     </li>
-                    <li>
-                        Hello, {loggedInUser}
+                    <li className="pl-3">
+                        <span className="text-fuchsia-800">Hello, {loggedInUser}</span>
                     </li>
                 </ul>
             </div>

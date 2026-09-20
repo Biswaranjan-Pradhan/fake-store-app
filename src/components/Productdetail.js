@@ -22,7 +22,7 @@ const Productdetail = () => {
 
     return prodDetail == null ? <ShimmerProductCard></ShimmerProductCard> : (
         <>
-            <div className="product-detail-container">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4 w-full mt-16">
                 <div className="prod-detail-image">
                     <img src={prodDetail.image}
                         alt={prodDetail.title?.split(' ')?.slice(0, 3)?.join('')} />
@@ -44,7 +44,7 @@ const Productdetail = () => {
             <div className="mt-16">
                 <h2>Recommanded Products</h2>
             </div>
-            <div className="prod-lists">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] w-full">
                 {
                     findProductGroup?.map((product) => {
                         return <Link to={`/product/${product.id}`} key={product.id}>

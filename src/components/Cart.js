@@ -34,19 +34,23 @@ const Cart = () => {
     }
 
     console.log(cartItems[0]);
-    return cartItems.length === 0 ? (<div className="center-item">
-        <img src={EMPTY_CART}/><br/>
-        <h3>Awww, your cart is empty</h3>
-        <Link className="btn-small mt-16" to="/">Explore Products</Link>
+    return cartItems.length === 0 ? (<div className="flex align-center flex-col">
+        <div>
+            <img src={EMPTY_CART}/>
+        </div>
+        <div className="mb-5">
+            <h3>Awww, your cart is empty</h3>
+            <Link className="text-fuchsia-800 p-1 rounded hover:bg-fuchsia-800 hover:text-amber-50" to="/">Explore Products</Link>
+        </div>
     </div>) : (
         <div>
-            <div className="cart-action">
+            <div className="flex justify-between align-center mt-10 mb-10">
                 <div>
-                    <h2 className="mb-28 mt-28">Cart List ({cartItems.length})</h2>
+                    <h2 className="text-2xl">Cart List ({cartItems.length})</h2>
                 </div>
                 <div>
                     <p>
-                        <b className="clear-cart" onClick={clearHandler} >
+                        <b className="text-fuchsia-800 cursor-pointer hover:text-white hover:bg-fuchsia-800 p-1 rounded" onClick={clearHandler} >
                             Clear Cart
                         </b>
                     </p>
@@ -59,8 +63,8 @@ const Cart = () => {
                 })
             }
 
-            <div className="mt-28">
-                <div className="ml-30">
+            <div className="">
+                <div className="ml-2 mt-5 text-lg">
                     Total Price <b>₹{caculateTotal(cartItems)}</b>
                 </div>
             </div>

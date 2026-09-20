@@ -17,7 +17,7 @@ const App = () => {
     const { loggedInUser } = useContext(UserContext);
     console.log(loggedInUser);
     return (
-        <div className="container">
+        <div className="container-fluid px-5">
             <Provider store={appStore}>
             <UserContext.Provider value={ {loggedInUser: "Biswaranjan"} }>
                 <Header />

@@ -28,44 +28,45 @@ const Body = () => {
     if(productList.length === 0) return <ShimmerProductCard/>;
 
     return (
-        <div className="app-body">
-            <div className="filter-options">
+        <div className="">
+            <div className="flex align-center justify-between my-6">
                 <div>
-                    Filter Products:
-                    <button onClick={() => 
+                    <span className="font-bold">Filter Products:</span>
+                    <button
+                    onClick={() => 
                         applyFilter('All', () => filteredProductList)
-                    } className={`btn-small ${activeFilter === 'All' ? 'active' : ''}`}>All</button>
+                    } className={`text-fuchsia-800 rounded-md ml-4 cursor-pointer p-1 ${activeFilter === 'All' ? 'bg-fuchsia-800 text-white' : ''}`}>All</button>
                     <button onClick={() => {
                         const filteredProducts = filteredProductList.filter((prod) => prod.rating.rate >= 4);
                         setActiveFilter('Top Rated');
                         setListOfProducts(filteredProducts);
-                    }} className={`btn-small ${activeFilter === 'Top Rated' ? 'active' : ''}`}>Top Rated</button>
+                    }} className={`text-fuchsia-800 rounded-md ml-4 cursor-pointer p-1 ${activeFilter === 'Top Rated' ? 'bg-fuchsia-800 text-white' : ''}`}>Top Rated</button>
                     <button onClick={() => {
                         const mensClothing = filteredProductList.filter((prod) => prod.category.toLowerCase() === "men's clothing".toLowerCase());
                         setActiveFilter('Mens Clothing');
                         setListOfProducts(mensClothing);
                     }}
-                        className={`btn-small ${activeFilter === 'Mens Clothing' ? 'active' : ''}`}>Men's Clothings</button>
+                        className={`text-fuchsia-800 rounded-md ml-4 cursor-pointer p-1 ${activeFilter === 'Mens Clothing' ? 'bg-fuchsia-800 text-white' : ''}`}>Men's Clothings</button>
                     <button onClick={() => {
                         const womenClothing = filteredProductList.filter((prod) => prod.category.toLowerCase() === "women's clothing".toLowerCase());
                         setActiveFilter('Womens Clothing');
                         setListOfProducts(womenClothing);
-                    }} className={`btn-small ${activeFilter === "Womens Clothing" ? 'active' : ''}`}>Women's Clothings</button>
+                    }} className={`text-fuchsia-800 rounded-md ml-4 cursor-pointer p-1 ${activeFilter === "Womens Clothing" ? 'bg-fuchsia-800 text-white' : ''}`}>Women's Clothings</button>
                     <button onClick={() => {
                         const jwellery = filteredProductList.filter((prod) => prod.category.toLowerCase() === "jewelery".toLowerCase());
                         setActiveFilter('Jwellery');
                         setListOfProducts(jwellery);
-                    }} className={`btn-small ${activeFilter === 'Jwellery' ? 'active' : ''}`}>Jwellery</button>
+                    }} className={`text-fuchsia-800 rounded-md ml-4 cursor-pointer p-1 ${activeFilter === 'Jwellery' ? 'bg-fuchsia-800 text-white' : ''}`}>Jwellery</button>
                     <button onClick={() => {
                         const electronics = filteredProductList.filter((prod) => prod.category.toLowerCase() === "electronics".toLowerCase());
                         setActiveFilter('Electronics');
                         setListOfProducts(electronics);
-                    }} className={`btn-small ${activeFilter === 'Electronics' ? 'active' : ''}`}>Electronics</button>
+                    }} className={`text-fuchsia-800 rounded-md ml-4 cursor-pointer p-1 ${activeFilter === 'Electronics' ? 'bg-fuchsia-800 text-white' : ''}`}>Electronics</button>
                 </div>
                 <div>
                     <input 
                         type="text" 
-                        className="input-filed mr-4" 
+                        className="border border-fuchsia-800 rounded-md p-1" 
                         value={searchProduct} 
                         onChange={
                             (e) => { 
@@ -77,7 +78,7 @@ const Body = () => {
                         } 
                         placeholder="search product" />
                     <button 
-                        className="btn-small" 
+                        className="text-fuchsia-800 rounded-md ml-1 cursor-pointer p-1 hover:bg-fuchsia-800 hover:text-white" 
                         onClick={() => {
                         const searchedProducts = filteredProductList.filter((prod) => {
                             return prod.title.toLowerCase().includes(searchProduct.toLowerCase());
@@ -86,19 +87,19 @@ const Body = () => {
                     }}>Search</button>
                 </div>
             </div>
-            <div className="total-prod-count">
+            <div className="mb-12">
                 {
                     listOfProducts.length == 0 && searchProduct.trim() !== '' ?
                     <>
                         Sorry, no products found for your search: <b className="highlight-text">{searchProduct}</b>
                     </> :
                     <>
-                        Total <span className="highlight-text">{listOfProducts.length}</span> Products Available
+                        Total <span className="text-fuchsia-800 bg-amber-50 p-1 rounded-md">{listOfProducts.length}</span> Products Available
                     </>
                 }
                 
             </div>
-            <div className="prod-lists">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] w-full">
                 {
                     listOfProducts.map((product) => {
                         return product.category === "women's clothing"

@@ -26,19 +26,19 @@ const Productlist = (props) => {
     }
 
     return (
-        <div className="prod-card">
+        <div className="w-62.5 m-1 p-2 rounded-md hover:shadow-md">
             <img src={image} width={200} height={200} />
-            <div className="prod-details">
+            <div className="p-2">
                 <Link  key={productInfo.id} to={`/product/${productInfo.id}`}>
                     <h3>{title?.split(' ')?.slice(0, 3)?.join(' ')}</h3>
                 </Link>
-                <p className="price-tag">₹{Math.round(price * 8000)/100}</p>
+                <p className="text-lg font-bold">₹{Math.round(price * 8000)/100}</p>
                 <p>{description?.split(' ')?.slice(0, 6)?.join(' ')}</p>
-                <p className="rating">
+                <p className="text-sm text-gray-600">
                     Ratings {rating?.rate} ({rating?.count})
                 </p>
                 <p>
-                    <button className='btn-small' onClick={() => handleAddToCart(productInfo)}>
+                    <button className='text-fuchsia-800 rounded-md ml-1 cursor-pointer p-1 hover:bg-fuchsia-800 hover:text-white' onClick={() => handleAddToCart(productInfo)}>
                         Add to cart
                     </button>
                 </p>
@@ -50,8 +50,8 @@ const Productlist = (props) => {
 export const womenTaggedProduct = (Productlist) => {
     return (prods) => {
         return (
-            <div>
-                <span className="women-tag">
+            <div className="relative">
+                <span className="block absolute top-0 left-1 z-10">
                     <img src={FEMALE_TAGGED_PRODUCTS} alt="female" width={40} height={40}/>
                 </span>
                 <Productlist {...prods}/>

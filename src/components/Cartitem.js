@@ -38,17 +38,17 @@ const Cartitem = (item) => {
         dispatch(removeToCart(item));
     }
     return (
-        <div className="cart-list mt-16">
-            <div className="prod-detail-image">
-                <img src={item.item.image} width={40} height={40}/>
+        <div className="flex justify-start align-center p-2 m-2 rounded-md hover:shadow-md">
+            <div className="">
+                <img src={item.item.image} width={50} height={50}/>
             </div>
-            <div className="prod-detail-data cart-action">
-                <div>
+            <div className="flex justify-between align-center w-full">
+                <div className="flex justify-center align-center flex-col ml-5">
                     <p>
                         <b>{item.item.title}</b>
                     </p>
                     <p>
-                        <span className="mr-16">
+                        <span className="mr-4">
                             Quantity: {item.item.quantity}
                         </span>
                         <span>
@@ -57,17 +57,17 @@ const Cartitem = (item) => {
                     </p>
                 </div>
                 <div>
-                    <span>
+                    <span className="flex justify-start items-center mt-5">
                         <img 
                             title="Add to Cart" 
-                            className="mr-16 img-hover" 
+                            className="cursor-pointer" 
                             width={20} 
                             height={20} 
                             src={ADD_TO_CART_ICON} 
                             onClick={() => addItem(item.item)}/>
                         <img 
                             title="Remove from Cart" 
-                            className="img-hover" 
+                            className="cursor-pointer ml-5" 
                             width={20} 
                             height={20} 
                             src={DELETE_ICON} 
