@@ -172,6 +172,16 @@ body {
     cursor: pointer;
 }
 
+.active {
+    background-color: blueviolet;
+    color: #fff;
+    padding: 6px;
+    margin-right: 4px;
+    border: 1px solid blueviolet;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
 .filter-options {
     display: flex;
     justify-content: space-between;
